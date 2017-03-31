@@ -7,7 +7,6 @@ import by.bsuir.matys_rozin_zarudny.layer.service.entities.taxi.Taxi;
 /**
  * Represents the awaiting taxi booking state.
  *
- * @author robertnorthard
  */
 public class AwaitingTaxiBookingState implements BookingState {
 
