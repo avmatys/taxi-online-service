@@ -1,0 +1,84 @@
+@font-face {
+	font-family: "RobotoRegular";
+	src: url("fonts/RobotoRegular/RobotoRegular.eot");
+	src: url("fonts/RobotoRegular/RobotoRegular.eot?#iefix") format("embedded-opentype"),
+			 url("fonts/RobotoRegular/RobotoRegular.woff") format("woff"),
+			 url("fonts/RobotoRegular/RobotoRegular.ttf") format("truetype");
+	font-style: normal;
+	font-weight: normal;
+}
+@font-face {
+	font-family: 'MuseoSans';
+	src: url('fonts/MuseoCyrl/MuseoSans-500.eot');
+	src: url('fonts/MuseoCyrl/MuseoSans-500.woff2') format('woff2'),
+	url('fonts/MuseoCyrl/MuseoSans-500.woff') format('woff'),
+	url('fonts/MuseoCyrl/MuseoSans-500.ttf') format('truetype'),
+	url('fonts/MuseoCyrl/MuseoSans-500.svg#MuseoSans-500') format('svg'),
+	url('fonts/MuseoCyrl/MuseoSans-500.eot?#iefix') format('embedded-opentype');
+	font-weight: normal;
+	font-style: normal;
+}
+@font-face {
+  font-family: 'Museo Sans Cyrl 300';
+  src: url('fonts/MuseoCyrl/MuseoSansCyrl-300.woff') format('woff'),
+       url('fonts/MuseoCyrl/MuseoSansCyrl-300.ttf') format('truetype'),
+       url('fonts/MuseoCyrl/MuseoSansCyrl-300.svg#MuseoSansCyrl-300') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'MuseoSansRegular';
+  src: url('fonts/MuseoCyrl/MuseoSansRegular.eot');
+  src: url('fonts/MuseoCyrl/MuseoSansRegular.woff2') format('woff2'),
+       url('fonts/MuseoCyrl/MuseoSansRegular.eot?#iefix') format('embedded-opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+	font-family: 'MuseoCyrl';
+	src: url('fonts/MuseoCyrl/MuseoCyrl-500.woff') format('woff'),
+	url('fonts/MuseoCyrl/MuseoCyrl-500.ttf') format('truetype'),
+	url('fonts/MuseoCyrl/MuseoCyrl-500.svg#MuseoCyrl-500') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'MuseoCyrillic';
+	src: url('fonts/MuseoCyrl/museo_cyrillic.eot');
+	src: url('fonts/MuseoCyrl/museo_cyrillic.woff2') format('woff2'),
+	url('fonts/MuseoCyrl/museo_cyrillic.eot?#iefix') format('embedded-opentype');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'MuseoSansCyrl';
+	src: url('fonts/MuseoCyrl/MuseoSansCyrl-500.woff') format('woff'),
+	url('fonts/MuseoCyrl/MuseoSansCyrl-500.ttf') format('truetype'),
+	url('fonts/MuseoCyrl/MuseoSansCyrl-500.svg#MuseoSansCyrl-500') format('svg');
+	src: url('fonts/MuseoCyrl/museosanscyrl-500.eot');
+	src: url('fonts/MuseoCyrl/museosanscyrl-500.woff2') format('woff2'),
+	url('fonts/MuseoCyrl/museosanscyrl-500.eot?#iefix') format('embedded-opentype');
+	font-weight: normal;
+	font-style: normal;
+}
+@font-face {
+  font-family: 'Berlin Sans FB Demi Bold';
+  src: url('fonts/MuseoCyrl/Berlin Sans FB Demi Bold.eot');
+  src: url('fonts/MuseoCyrl/Berlin Sans FB Demi Bold.woff2') format('woff2'),
+       url('fonts/MuseoCyrl/Berlin Sans FB Demi Bold.eot?#iefix') format('embedded-opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Berlin Sans FB Demi Bold';
+  src: url('fonts/MuseoCyrl/BerlinSansFBDemi-Bold.woff') format('woff'),
+       url('fonts/MuseoCyrl/BerlinSansFBDemi-Bold.ttf') format('truetype'),
+       url('fonts/MuseoCyrl/BerlinSansFBDemi-Bold.svg#BerlinSansFBDemi-Bold') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
