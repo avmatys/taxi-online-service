@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--><html lang="ru"> <!--<![endif]-->
+
+<head>
+
+	<meta charset="utf-8">
+
+	<title>Заказать такси - ZUBER</title>
+	<meta name="description" content="">
+
+	<!-- Fonts Loader from _fonts.css (HTML5 LocalStorage) -->
+	<script>!function(){function e(e,t,n){e.addEventListener?e.addEventListener(t,n,!1):e.attachEvent&&e.attachEvent("on"+t,n)}function t(e){return window.localStorage&&localStorage.font_css_cache&&localStorage.font_css_cache_file===e}function n(){if(window.localStorage&&window.XMLHttpRequest)if(t(o))a(localStorage.font_css_cache);else{var n=new XMLHttpRequest;n.open("GET",o,!0),e(n,"load",function(){4===n.readyState&&(a(n.responseText),localStorage.font_css_cache=n.responseText,localStorage.font_css_cache_file=o)}),n.send()}else{var c=document.createElement("link");c.href=o,c.rel="stylesheet",c.type="text/css",document.getElementsByTagName("head")[0].appendChild(c),document.cookie="font_css_cache"}}function a(e){var t=document.createElement("style");t.innerHTML=e,document.getElementsByTagName("head")[0].appendChild(t)}var o="_fonts.css";window.localStorage&&localStorage.font_css_cache||document.cookie.indexOf("font_css_cache")>-1?n():e(window,"load",n)}();</script>
+	
+	<!-- Load CSS Compilled without JS -->
+	<noscript><link rel="stylesheet" href="compiled.min.css"></noscript>
+
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<link rel="shortcut icon" href="img/favicon/favicon.ico" type="image/x-icon">
+	<link rel="apple-touch-icon" href="img/favicon/apple-touch-icon.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="img/favicon/apple-touch-icon-72x72.png">
+	<link rel="apple-touch-icon" sizes="114x114" href="img/favicon/apple-touch-icon-114x114.png">
+	<link rel="stylesheet" href="_fonts.css">
+</head>
+
+<body>
+	<header>
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-sm-8">
+					<div class="logo">zuber</div>
+					<nav>
+						<a href="order.html">Заказать такси</a>
+						<a href="#">Тарифы</a>
+						<a href="#">Zuber для водителей</a>
+						<a href="#">Правила</a>
+					</nav>
+				</div>
+				<div class="col-sm-4">
+					<div class="auth">
+						<a href="login.html"><i class="flaticon-avatar"></i> Войти</a>
+						<a href="register.html"><i class="flaticon-logout"></i> Регистрация</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</header>
+	<main>
+		<section>
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-sm-12 clearfix">
+						<div id="map" style="width: 100%;height: 100vh;">
+							
+						</div>
+						<div class="order_form">
+							<input onclick="clearMarkers();" type=button value="Hide Markers">
+							<input onclick="showMarkers();" type=button value="Show All Markers">
+							<input onclick="deleteMarkers();" type=button value="Delete Markers">
+							<form action="" method="post">
+								<input type="text" name="startLocation" placeholder="Точка отрпавления">
+								<input type="text" name="endLocation" placeholder="Точка назначения">
+								<input type="text" name="numberPassengers" placeholder="Кол-во пассажиров">
+								<button class="btn__submit" type="submit">Заказать такси!</button>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+	</main>
+	<!-- Здесь пишем код -->
+
+	<div class="hidden"></div>
+
+	<!--[if lt IE 9]>
+	<script src="libs/html5shiv/es5-shim.min.js"></script>
+	<script src="libs/html5shiv/html5shiv.min.js"></script>
+	<script src="libs/html5shiv/html5shiv-printshiv.min.js"></script>
+	<script src="libs/respond/respond.min.js"></script>
+	<![endif]-->
+
+	<!-- Load CSS -->
+	<script>
+		function loadCSS(hf) {
+			var ms=document.createElement("link");ms.rel="stylesheet";
+			ms.href=hf;document.getElementsByTagName("head")[0].appendChild(ms);
+		}
+		loadCSS("libs/bootstrap/css/bootstrap.min.css");
+		loadCSS("libs/animate/animate.css"); //Load Libs CSS: Animate CSS
+		loadCSS("fonts/flaticons/font/flaticon.css");
+		loadCSS("_header.css");              //Header Styles (compress & paste to header after release)
+		loadCSS("_main.css");                //User Styles: Main
+		loadCSS("_media.css");               //User Styles: Media
+	</script>
+
+	<!-- Load CSS compiled without Bootstrap & Header styles (after release) -->
+	<script>var ms=document.createElement("link");ms.rel="stylesheet";
+		// ms.href="compiled.min.css";document.getElementsByTagName("head")[0].appendChild(ms);
+	</script>
+
+	<!-- Load Scripts -->
+	<script>var scr = {"scripts":[
+		{"src" : "libs/modernizr/modernizr.js", "async" : false},
+		{"src" : "libs/jquery/jquery-1.11.2.min.js", "async" : false},
+		{"src" : "libs/waypoints/waypoints.min.js", "async" : false},
+		{"src" : "libs/animate/animate-css.js", "async" : false},
+		{"src" : "libs/plugins-scroll/plugins-scroll.js", "async" : false},
+		
+		{"src" : "js/map.js" , "async" : false},
+		{"src" : "https://maps.googleapis.com/maps/api/js?key=AIzaSyC-WCfSzS_s5LEqMz_Lx3Fn2dKRStNquYs&callback=initMap","async" : false},
+		{"src" : "js/common.js", "async" : false}
+		]};!function(t,n,r){"use strict";var c=function(t){if("[object Array]"!==Object.prototype.toString.call(t))return!1;for(var r=0;r<t.length;r++){var c=n.createElement("script"),e=t[r];c.src=e.src,c.async=e.async,n.body.appendChild(c)}return!0};t.addEventListener?t.addEventListener("load",function(){c(r.scripts);},!1):t.attachEvent?t.attachEvent("onload",function(){c(r.scripts)}):t.onload=function(){c(r.scripts)}}(window,document,scr);
+	</script>
+
+</body>
+</html>
