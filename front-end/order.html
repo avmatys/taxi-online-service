@@ -57,14 +57,15 @@
 							
 						</div>
 						<div class="order_form">
-							<input onclick="clearMarkers();" type=button value="Hide Markers">
-							<input onclick="showMarkers();" type=button value="Show All Markers">
-							<input onclick="deleteMarkers();" type=button value="Delete Markers">
 							<form action="" method="post">
+								<div class="form-header">Заказать такси</div>
+								<p>Укажите начальную точку отправления и точку назначения, укажите кол-во пассажиров. После отправки данных, Вам будет подсчитана стимость поездки.</p>
 								<input type="text" name="startLocation" placeholder="Точка отрпавления">
 								<input type="text" name="endLocation" placeholder="Точка назначения">
-								<input type="text" name="numberPassengers" placeholder="Кол-во пассажиров">
+								<input type="number" name="numberPassengers" placeholder="Кол-во пассажиров">
 								<button class="btn__submit" type="submit">Заказать такси!</button>
+								<p>Для удаления ошибочных точек, нажмите на кнопку</p>
+								<input onclick="deleteMarkers();" type="button" class="btn__interface" value="Удалить маркеры">
 							</form>
 						</div>
 					</div>
