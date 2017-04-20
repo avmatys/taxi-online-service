@@ -37,6 +37,68 @@ a:hover,a:focus,a:active{
 	background-size: cover;
 	background-repeat: no-repeat;
 }
+.order_form{
+	position: absolute;
+	display: block;
+	max-width:350px;
+	width: 100%;
+	top: 130px;
+	right: 30px;
+
+}
+.order_form>form{
+	text-align: center;
+	padding: 25px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius:5px;
+	border-radius:5px;
+	background-color: rgba(255,255,255,0.7);
+	transition: all .2s ease-in-out;
+}
+.form-header{
+	font-size: 28px;
+	font-weight: bold;
+	margin-bottom: 15px;
+	line-height: 1.16;
+}
+.order_form>form>p{
+	line-height: 1.16;
+	font-size: 14px;
+}
+.order_form>form>input::placeholder{
+	color: #c6c6c6;
+}
+.order_form>form>input{
+	display: block;
+	border:1px solid #c6c6c6;
+	-webkit-border-radius:3px;
+	-moz-border-radius:3px;
+	border-radius:3px;
+	height: 35px;
+	padding: 3px 10px;
+	margin: 10px auto;
+	width: 100%;
+}
+.btn__submit,.btn__interface{
+	border:2px solid black;
+	-webkit-border-radius:3px;
+	-moz-border-radius:3px;
+	border-radius:3px;
+	background-color: transparent;
+	font-size: 18px;
+	padding: 5px 15px;
+	margin: 15px auto;
+	outline: none;
+	-webkit-transition: all .15s ease-in-out;
+	-moz-transition: all .15s ease-in-out;
+	-ms-transition: all .15s ease-in-out;
+	-o-transition: all .15s ease-in-out;
+	transition: all .15s ease-in-out;
+}
+.btn__submit:hover,.btn__interface:hover{
+	color:white;
+	background: #000000;
+}
 .form_wrap{
 	position: relative;
 }
@@ -60,6 +122,9 @@ a:hover,a:focus,a:active{
 }
 .form_wrap>form:hover{
 	background-color: rgba(219,219,219,0.9);
+}
+.order_form>form:hover{
+	background-color: rgba(255,255,255,0.9);
 }
 .form_wrap>form:hover .form_wrap>form>button,.form_wrap>form>input{
 	opacity: 0.9;
