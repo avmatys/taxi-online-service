@@ -65,20 +65,3 @@
 	font-weight: normal;
 	font-style: normal;
 }
-@font-face {
-  font-family: 'Berlin Sans FB Demi Bold';
-  src: url('fonts/MuseoCyrl/Berlin Sans FB Demi Bold.eot');
-  src: url('fonts/MuseoCyrl/Berlin Sans FB Demi Bold.woff2') format('woff2'),
-       url('fonts/MuseoCyrl/Berlin Sans FB Demi Bold.eot?#iefix') format('embedded-opentype');
-  font-weight: normal;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'Berlin Sans FB Demi Bold';
-  src: url('fonts/MuseoCyrl/BerlinSansFBDemi-Bold.woff') format('woff'),
-       url('fonts/MuseoCyrl/BerlinSansFBDemi-Bold.ttf') format('truetype'),
-       url('fonts/MuseoCyrl/BerlinSansFBDemi-Bold.svg#BerlinSansFBDemi-Bold') format('svg');
-  font-weight: normal;
-  font-style: normal;
-}
