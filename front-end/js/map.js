@@ -134,7 +134,7 @@ function geocodeLatLng() {
             }
         } else {
             //TO-DO Create beautiful notification
-            $('.alert.danger').html('<span class="closebtn"  onclick="toggle()>&times;</span><strong>Oops!</strong> Ошибка геокодера: ' + status).show();
+            $('.alert.danger').html('<span class="closebtn"  onclick="toggle()">&times;</span><strong>Oops!</strong> Ошибка геокодера: ' + status).show();
         }
     });
 }

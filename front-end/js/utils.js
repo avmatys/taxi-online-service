@@ -69,6 +69,33 @@ function taxiBooking(data) {
         $('.alert.danger').html('<span class="closebtn" onclick="toggle()">&times;</span><strong>Ошибочка!</strong> Нельзя заказать такси!').show();
     });
 }
+
+// Function for find active booking for user
+// param: data - user login
+function findActiveBooking() {
+    $.ajax({
+        dataType: 'json',
+        contentType: "application/json; charset=utf-8",
+        timeout: 10000,
+        type: 'GET',
+        beforeSend: function(xhr){
+            var user = JSON.parse(Cookies.get('user-info'));
+            xhr.setRequestHeader("Authorization",
+                "Basic " + btoa(user.username + ":" + user.password));
+        },
+        url: 'http://localhost:8080/taxi-online-service/api/v1/booking/active/'
+
+    }).done(function (data, textStatus, jqXHR) {
+        if(data.status === "0") {
+            $('.options__current_order>p').html("Из " + data.data.route.start_address.address + " в " + data.data.route.end_address.address + ". " + data.data.cost + " руб.");
+        }
+
+    }).fail(function (jqXHR, textStatus, errorThrown) {
+        //TODO notification
+        alert('error');
+    });
+}
+
 //-----Special utils for REST client-----//
 
 //Util which include an authorization header in request

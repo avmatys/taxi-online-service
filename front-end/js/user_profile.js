@@ -6,6 +6,9 @@ jQuery(document).ready(function ($) {
         $('#login').text("Логин: "+data.username);
         $('#email').text("Электронная почта: "+data.email);
         $('#phone_number').text("Номер телефона: "+data.phone_number);
+
+        //load current booking
+        findActiveBooking();
     }
     else{
         window.location.href = 'login.html';
