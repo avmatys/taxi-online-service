@@ -9,6 +9,7 @@ jQuery(document).ready(function ($) {
     }
     $('.taxi-options>a:first').attr("href", link);
 
+    //TODO validation
     $('#form_login').submit(function (event) {
         event.preventDefault();
         authorization(JSON.stringify(createAuthorizationJSONData()));

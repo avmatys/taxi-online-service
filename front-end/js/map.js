@@ -188,3 +188,20 @@ function showRouteInfo(totalDistance, totalDuration, totalCost) {
     $('#totalDuration').find('span').text(Math.round(totalDuration) + " мин.");
     $('#totalCost').find('span').text(Math.round(totalCost) + " руб.");
 }
+
+//Function for getting route information
+function getRouteInformaton(){
+    if(markers.length==2){
+        var route = {
+            'start_location':{
+                'latitude': markers[0].position.lat(),
+                'longitude': markers[0].position.lng()
+            },
+            'end_location':{
+                'latitude': markers[1].position.lat(),
+                'longitude': markers[1].position.lng()
+            }
+        }
+        return route;
+    }
+}

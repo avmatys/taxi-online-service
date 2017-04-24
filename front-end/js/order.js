@@ -15,5 +15,11 @@ jQuery(document).ready(function ($) {
     else {
         window.location.href = "login.html";
     }
+
+    //TODO validation
+    $('#form_order').submit(function (event) {
+        event.preventDefault();
+        taxiBooking(JSON.stringify(createTaxiBookingJSONData()));
+    });
 });
 

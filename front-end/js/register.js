@@ -9,6 +9,7 @@ jQuery(document).ready(function ($) {
     }
     $('.taxi-options>a:first').attr("href", link);
 
+    //TODO validation
     jQuery(document).ready(function ($) {
         $('#form_register').submit(function (event) {
             event.preventDefault();
