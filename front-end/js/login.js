@@ -3,6 +3,6 @@
 jQuery(document).ready(function ($) {
     $('#form_login').submit(function (event) {
         event.preventDefault();
-        authorization(createAuthorizationJSONData());
+        authorization(JSON.stringify(createAuthorizationJSONData()));
     });
 });
