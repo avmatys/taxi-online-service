@@ -38,6 +38,8 @@ function logout(){
         Cookies.remove('user-info');
     }
     window.location.href = 'index.html';
+    //Need for <a href="" ...></a> to disable hyperlink
+    return false;
 }
 //-----Special utils for REST client-----//
 
