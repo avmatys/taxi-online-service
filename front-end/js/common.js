@@ -30,6 +30,6 @@ function redirectTo(link){
 	window.location = ''+link;
 }
 
-function showHide(){
+function toggle(){
 	$(this).parent().toggle();
 }
