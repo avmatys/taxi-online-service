@@ -67,9 +67,11 @@
 								<p>Для удаления ошибочных точек, нажмите на кнопку</p>
 								<input onclick="deleteMarkersRouteInfo();" type="button" class="btn__interface" value="Удалить маркеры">
 							</form>
-							<p id="totalDistance"> </p>
-							<p id="totalDuration"> </p>
-							<p id="totalCost"> </p>
+							<div class="order__results">
+								<p id="totalDistance">Общее расстояние: <span></span></p>
+								<p id="totalDuration">Примерное время: <span></span></p>
+								<p id="totalCost">Примерная стоимость: <span></span></p>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -79,6 +81,22 @@
 	<!-- Здесь пишем код -->
 
 	<div class="hidden"></div>
+
+	<div class="alert danger">
+
+	</div>
+
+	<div class="alert success">
+
+	</div>
+
+	<div class="alert info">
+
+	</div>
+
+	<div class="alert warning">
+
+	</div>
 
 	<!--[if lt IE 9]>
 	<script src="libs/html5shiv/es5-shim.min.js"></script>
@@ -116,7 +134,7 @@
         {"src" : "libs/cookie/js.cookie.js", "async" : false},
 
         {"src" : "js/utils.js", "async" : false},
-        {"src" : "js/order.js", "async" : false},
+        //{"src" : "js/order.js", "async" : false},
 		{"src" : "js/map.js" , "async" : false},
 		{"src" : "https://maps.googleapis.com/maps/api/js?key=AIzaSyC-WCfSzS_s5LEqMz_Lx3Fn2dKRStNquYs&callback=initMap","async" : false},
 		{"src" : "js/common.js", "async" : false}
