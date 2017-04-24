@@ -2,7 +2,7 @@
 // Functions are described in file utils.js
 jQuery(document).ready(function ($) {
     //Change links
-    var link = "login.html"
+    var link = "login.html";
     if (!!Cookies.get('user-info')) {
         //Have cookie
         link="order.html";
