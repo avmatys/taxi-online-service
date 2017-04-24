@@ -14,15 +14,15 @@ function authorization(data){
         url: 'http://localhost:8080/taxi-online-service/api/v1/auth/login/'
  
     }).done(function(data, textStatus, jqXHR) {
-        //Need to dave user data
+        // Need to dave user data
         saveUserData(data);
-        //TO-DO Redirect to user page (passenger or driver)
+        // Redirect to account page (passenger or driver)
         var redirectPage = "index.html";
         if(data.data.role == "PASSENGER") {
            redirectPage = "user_profile.html"
         }
         else if(data.data.role == "DRIVER"){
-            redirectPage = "user_profile.html"
+            redirectPage = "driver_profile.html"
         }
         window.location.href = redirectPage;
  
@@ -32,6 +32,13 @@ function authorization(data){
     });	
 }
 
+//Logout function
+function logout(){
+    if(!!Cookies.get('user-info')){
+        Cookies.remove('user-info');
+    }
+    window.location.href = 'index.html';
+}
 //-----Special utils for REST client-----//
 
 //Util which include an authorization header in request
@@ -42,7 +49,7 @@ function makeAuthorizationHeader(xhr, data) {
         "Basic " + btoa(data.username + ":" + data.password));
 }
 
-//Util for creating JSON login and password data
+// Util for creating JSON login and password data
 function createAuthorizationJSONData(){
 	var json = {
 		'username': $('#username').val(), 
@@ -51,7 +58,7 @@ function createAuthorizationJSONData(){
 	return json;
 }
 
-//Util for saving user-info data into Cookie
+// Util for saving user-info data into Cookie
 // param: data - account information
 function saveUserData(data){
     // Need to save the account data in order to provide basic authorization feature
