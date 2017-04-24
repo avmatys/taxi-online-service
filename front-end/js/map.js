@@ -62,7 +62,8 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
 function placeMarkerAndPanTo(latLng, map) {
 
     if (markers.length >= 2) {
-        $('.alert.warning').html('<span class="closebtn">&times;</span><strong>Oops!</strong> Путь не может содержать более 2 точек').show();
+        $('.alert.warning').html('<span class="closebtn" onclick="toggle()">&times;</span><strong>Oops!</strong> Путь не может содержать более 2 точек').toggle();
+
     } else {
         var marker = new google.maps.Marker({
             position: latLng,
@@ -129,13 +130,11 @@ function geocodeLatLng() {
                     document.getElementById('endLocation').value = results[0].formatted_address;
                 }
             } else {
-                $('.alert.warning').html('<span class="closebtn">&times;</span><strong>Oops!</strong> Место не найдено').show();
-                //window.alert('Место не найдено');
+                $('.alert.warning').html('<span class="closebtn"  onclick="toggle()">&times;</span><strong>Oops!</strong> Место не найдено').show();
             }
         } else {
             //TO-DO Create beautiful notification
-            $('.alert.danger').html('<span class="closebtn">&times;</span><strong>Oops!</strong> Ошибка геокодера: ' + status).show();
-           // window.alert('Ошибка геокодера: ' + status);
+            $('.alert.danger').html('<span class="closebtn"  onclick="toggle()>&times;</span><strong>Oops!</strong> Ошибка геокодера: ' + status).show();
         }
     });
 }
