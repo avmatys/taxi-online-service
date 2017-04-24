@@ -3,7 +3,7 @@
 $(function() {
 	$('.logo').click(function(){
 		window.location="index.html";
-	})
+	});
 	$('.dropdown-toggle').click(function () {
 	    if($(this).hasClass('active')){
             $(this).css('transform','rotate(-45deg)').removeClass('active');
@@ -12,7 +12,7 @@ $(function() {
         }
 
 
-    })
+    });
 
 	//SVG Fallback
 	if(!Modernizr.svg) {
