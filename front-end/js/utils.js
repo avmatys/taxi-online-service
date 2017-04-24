@@ -65,3 +65,19 @@ function saveUserData(data){
     data.data.password = createAuthorizationJSONData().password;
     Cookies.set('user-info', JSON.stringify(data.data));
 }
+
+//Util for calculation cost of trip
+// param: distance - distance of a route in km
+//        duration - approximate time im minutes
+function calculateTripCost(distance, duration) {
+
+    //Define variables
+    var pickUpCost = 2.5;
+    var kilometerCost = 0.45;
+    var minuteCost = 0.07;
+
+    var costDistance = distance * kilometerCost;
+    var costDuration = duration * minuteCost;
+
+    return costDistance + costDuration / 10 + pickUpCost;
+}
