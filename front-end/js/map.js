@@ -61,20 +61,22 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
 //Also call a method for route creation
 function placeMarkerAndPanTo(latLng, map) {
 
-    if (markers.length < 2) {
+    if (markers.length >= 2) {
+        $('.alert.warning').html('<span class="closebtn">&times;</span><strong>Oops!</strong> Путь не может содержать более 2 точек').show();
+    } else {
         var marker = new google.maps.Marker({
             position: latLng,
             map: map
         });
         markers.push(marker);
         geocodeLatLng();
-        if (markers.length == 2) createRoute();
-    }
-    else {
-        //TO-DO Create beautiful notification
-        alert("Путь не может содержать более 2 точек");
+        if (markers.length === 2) {
+            createRoute();
+            $('.order__results').fadeIn();
+        }
     }
 }
+
 //Function for setting markers
 function setMapOnAll(map) {
     for (var i = 0; i < markers.length; i++) {
@@ -101,16 +103,17 @@ function deleteMarkersRouteInfo() {
     document.getElementById('endLocation').value = "";
 
     directionsDisplay.setDirections({routes: []});
+    $('.order__results').fadeOut();
 }
 
 //Function for getting address from longitude and latitude
 function geocodeLatLng() {
     var marker;
 
-    if (markers.length == 1) {
+    if (markers.length === 1) {
         marker = markers[0];
     }
-    if (markers.length == 2) {
+    if (markers.length === 2) {
         marker = markers[1];
     }
     //Create address according to latLng
@@ -119,19 +122,20 @@ function geocodeLatLng() {
         if (status === 'OK') {
             if (results[0]) {
                 //Write result
-                if (markers.length == 1) {
+                if (markers.length === 1) {
                     document.getElementById('startLocation').value = results[0].formatted_address;
                 }
-                if (markers.length == 2) {
+                if (markers.length === 2) {
                     document.getElementById('endLocation').value = results[0].formatted_address;
                 }
             } else {
-                //TO-DO Create beautiful notification
-                window.alert('Место не найдено');
+                $('.alert.warning').html('<span class="closebtn">&times;</span><strong>Oops!</strong> Место не найдено').show();
+                //window.alert('Место не найдено');
             }
         } else {
             //TO-DO Create beautiful notification
-            window.alert('Ошибка геокодера: ' + status);
+            $('.alert.danger').html('<span class="closebtn">&times;</span><strong>Oops!</strong> Ошибка геокодера: ' + status).show();
+           // window.alert('Ошибка геокодера: ' + status);
         }
     });
 }
@@ -159,7 +163,7 @@ function calculateRoute(start, end) {
         travelMode: 'DRIVING'
     };
     directionsService.route(request, function (response, status) {
-        if (status == 'OK') {
+        if (status === 'OK') {
             directionsDisplay.setDirections(response);
 
             //Calculate total duration and distance
@@ -180,7 +184,8 @@ function calculateRoute(start, end) {
 
 //Function for printing route information
 function showRouteInfo(totalDistance, totalDuration, totalCost) {
-    document.getElementById("totalDistance").innerText = "Общее расстояние: " + Math.round(totalDistance) + " км.";
-    document.getElementById("totalDuration").innerText = "Примерное время: " + Math.round(totalDuration) + " мин.";
-    document.getElementById("totalCost").innerText = "Примерная стоимость: " + Math.round(totalCost) + " руб.";
+
+    $('#totalDistance').find('span').text(Math.round(totalDistance) + " км.");
+    $('#totalDuration').find('span').text(Math.round(totalDuration) + " мин.");
+    $('#totalCost').find('span').text(Math.round(totalCost) + " руб.");
 }

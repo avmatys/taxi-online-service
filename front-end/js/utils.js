@@ -18,17 +18,18 @@ function authorization(data){
         saveUserData(data);
         // Redirect to account page (passenger or driver)
         var redirectPage = "index.html";
-        if(data.data.role == "PASSENGER") {
+        if(data.data.role === "PASSENGER") {
            redirectPage = "user_profile.html"
         }
-        else if(data.data.role == "DRIVER"){
+        else if(data.data.role === "DRIVER"){
             redirectPage = "driver_profile.html"
         }
         window.location.href = redirectPage;
  
     }).fail(function(jqXHR, textStatus, errorThrown) {
-    	//TO-DO   Add some special futures here
-        alert('Некорректный логин или пароль!');
+
+        $('.alert.danger').html('<span class="closebtn">&times;</span><strong>Ошибочка!</strong> Некорректный логин или пароль!').show();
+        //alert('Некорректный логин или пароль!');
     });	
 }
 
@@ -72,9 +73,9 @@ function saveUserData(data){
 function calculateTripCost(distance, duration) {
 
     //Define variables
-    var pickUpCost = 2.5;
-    var kilometerCost = 0.45;
-    var minuteCost = 0.07;
+    var pickUpCost = 4.5;
+    var kilometerCost = 0.85;
+    var minuteCost = 0.14;
 
     var costDistance = distance * kilometerCost;
     var costDuration = duration * minuteCost;

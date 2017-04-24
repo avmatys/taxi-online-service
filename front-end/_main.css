@@ -55,6 +55,23 @@ a:hover,a:focus,a:active{
 	background-color: rgba(255,255,255,0.7);
 	transition: all .2s ease-in-out;
 }
+.order__results{
+	margin-top: 10px;
+	text-align: center;
+	padding: 25px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius:5px;
+	border-radius:5px;
+	background-color: rgba(255,255,255,0.7);
+}
+.order__results>p:not(:last-child)>span{
+	font-weight: bold;
+	font-size:18px;
+}
+.order__results>p:last-child>span{
+	font-size: 22px;
+	font-weight: bold;
+}
 .form-header{
 	font-size: 28px;
 	font-weight: bold;
@@ -78,6 +95,7 @@ a:hover,a:focus,a:active{
 	padding: 3px 10px;
 	margin: 10px auto;
 	width: 100%;
+	outline-color: #0f0f0f;
 }
 .btn__submit,.btn__interface{
 	border:2px solid black;
@@ -98,6 +116,10 @@ a:hover,a:focus,a:active{
 .btn__submit:hover,.btn__interface:hover{
 	color:white;
 	background: #000000;
+}
+.order__results{
+	display: none;
+
 }
 .form_wrap{
 	position: relative;
@@ -125,6 +147,9 @@ a:hover,a:focus,a:active{
 }
 .order_form>form:hover{
 	background-color: rgba(255,255,255,0.9);
+}
+.order__results:hover{
+	background-color: rgba(255,255,255,1);
 }
 .form_wrap>form:hover .form_wrap>form>button,.form_wrap>form>input{
 	opacity: 0.9;
@@ -224,4 +249,37 @@ a:hover,a:focus,a:active{
 	margin-top: 15px;
 	border-bottom-left-radius: 5px;
 	border-bottom-right-radius: 5px;
+}
+
+.alert {
+	display: none;
+	position: absolute;
+	top:65px;
+	left: 0;
+	right: 0;
+	max-width: 600px;
+	margin:auto;
+	padding: 20px;
+	background-color: #f44336;
+	color: white;
+	opacity: 1;
+	transition: opacity 0.6s;
+}
+.alert.success {background-color: #4CAF50;}
+.alert.info {background-color: #2196F3;}
+.alert.warning {background-color: #ff9800;}
+
+.closebtn {
+	margin-left: 15px;
+	color: white;
+	font-weight: bold;
+	float: right;
+	font-size: 22px;
+	line-height: 20px;
+	cursor: pointer;
+	transition: 0.3s;
+}
+
+.closebtn:hover {
+	color: black;
 }
