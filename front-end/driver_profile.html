@@ -8,7 +8,7 @@
 
 	<meta charset="utf-8">
 
-	<title>Заказать такси - ZUBER</title>
+	<title>Заголовок</title>
 	<meta name="description" content="">
 
 	<!-- Fonts Loader from _fonts.css (HTML5 LocalStorage) -->
@@ -19,6 +19,7 @@
 
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
 	<link rel="shortcut icon" href="img/favicon/favicon.ico" type="image/x-icon">
 	<link rel="apple-touch-icon" href="img/favicon/apple-touch-icon.png">
 	<link rel="apple-touch-icon" sizes="72x72" href="img/favicon/apple-touch-icon-72x72.png">
@@ -32,8 +33,8 @@
 			<div class="row">
 				<div class="col-sm-8">
 					<div class="logo">zuber</div>
-					<nav class="taxi-options">
-						<a href="#">Заказать такси</a>
+					<nav>
+						<a href="order.html">Заказать такси</a>
 						<a href="#">Тарифы</a>
 						<a href="#">Zuber для водителей</a>
 						<a href="#">Правила</a>
@@ -48,37 +49,52 @@
 			</div>
 		</div>
 	</header>
-	<main>
-		<section>
-			<div class="container-fluid">
-				<div class="row">
-					<div class="col-sm-12 clearfix">
-						<div id="map" style="width: 100%;height: 100vh;">
-							
-						</div>
-						<div class="order_form">
-							<form action="" method="post">
-								<div class="form-header">Заказать такси</div>
-								<p>Укажите начальную точку отправления и точку назначения, укажите кол-во пассажиров. После отправки данных, Вам будет подсчитана стимость поездки.</p>
-								<input type="text" name="startLocation" id="startLocation" placeholder="Точка отрпавления">
-								<input type="text" name="endLocation" id="endLocation" placeholder="Точка назначения">
-								<input type="number" name="numberPassengers" placeholder="Кол-во пассажиров">
-								<button class="btn__submit" type="submit">Заказать такси!</button>
-								<p>Для удаления ошибочных точек, нажмите на кнопку</p>
-								<input onclick="deleteMarkersRouteInfo();" type="button" class="btn__interface" value="Удалить маркеры">
-							</form>
-							<p id="totalDistance"> </p>
-							<p id="totalDuration"> </p>
-							<p id="totalCost"> </p>
-						</div>
+	<main class="blured-bg">
+		<section class="container">
+				<div class="profile-wrap row">
+					<div class="col-sm-3 user_avatar">
+						<img src="http://placehold.it/200x200" alt="">
+					</div>
+					<div class="col-sm-9 info">
+						<div class="name">Александр Александрович</div>
+						<div class="login">username</div>
+					</div>
+				</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-12">
+				<ul class="nav nav-pills">
+					<li class="active"><a data-toggle="pill" href="#home">Home</a></li>
+					<li><a data-toggle="pill" href="#menu1">Menu 1</a></li>
+					<li><a data-toggle="pill" href="#menu2">Menu 2</a></li>
+					<li><a data-toggle="pill" href="#menu3">Menu 3</a></li>
+				</ul>
+
+				<div class="tab-content">
+					<div id="home" class="tab-pane fade in active">
+						<h3>HOME</h3>
+						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+					</div>
+					<div id="menu1" class="tab-pane fade">
+						<h3>Menu 1</h3>
+						<p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+					</div>
+					<div id="menu2" class="tab-pane fade">
+						<h3>Menu 2</h3>
+						<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
+					</div>
+					<div id="menu3" class="tab-pane fade">
+						<h3>Menu 3</h3>
+						<p>Eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
 					</div>
 				</div>
 			</div>
-		</section>
-	</main>
-	<!-- Здесь пишем код -->
+		</div>
+</section>
+</main>
+<!-- Здесь пишем код -->
 
-	<div class="hidden"></div>
+<div class="hidden"></div>
 
 	<!--[if lt IE 9]>
 	<script src="libs/html5shiv/es5-shim.min.js"></script>
@@ -110,17 +126,11 @@
 	<script>var scr = {"scripts":[
 		{"src" : "libs/modernizr/modernizr.js", "async" : false},
 		{"src" : "libs/jquery/jquery-1.11.2.min.js", "async" : false},
+		{"src" : "libs/bootstrap/js/bootstrap.min.js", "async" : false},
 		{"src" : "libs/waypoints/waypoints.min.js", "async" : false},
 		{"src" : "libs/animate/animate-css.js", "async" : false},
 		{"src" : "libs/plugins-scroll/plugins-scroll.js", "async" : false},
-        {"src" : "libs/cookie/js.cookie.js", "async" : false},
-
-        {"src" : "js/utils.js", "async" : false},
-        {"src" : "js/order.js", "async" : false},
-		{"src" : "js/map.js" , "async" : false},
-		{"src" : "https://maps.googleapis.com/maps/api/js?key=AIzaSyC-WCfSzS_s5LEqMz_Lx3Fn2dKRStNquYs&callback=initMap","async" : false},
 		{"src" : "js/common.js", "async" : false}
-
 		]};!function(t,n,r){"use strict";var c=function(t){if("[object Array]"!==Object.prototype.toString.call(t))return!1;for(var r=0;r<t.length;r++){var c=n.createElement("script"),e=t[r];c.src=e.src,c.async=e.async,n.body.appendChild(c)}return!0};t.addEventListener?t.addEventListener("load",function(){c(r.scripts);},!1):t.attachEvent?t.attachEvent("onload",function(){c(r.scripts)}):t.onload=function(){c(r.scripts)}}(window,document,scr);
 	</script>
 
