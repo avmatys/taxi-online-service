@@ -7,8 +7,19 @@ jQuery(document).ready(function ($) {
         $('#email').text("Электронная почта: "+data.email);
         $('#phone_number').text("Номер телефона: "+data.phone_number);
 
-        //load current booking
+        //Load current booking
         findActiveBooking();
+
+        //Add event listener for canceling current booking
+        $('#cancel_current_order').click(function() {
+            if( $('.options__current_order>p.current_order_id').html()!=="") {
+                cancelCurrentOrder($('.options__current_order>p.current_order_id').html());
+            }
+            else{
+                //TODO notification
+                alert("У вас нет заказа");
+            }
+        });
     }
     else{
         window.location.href = 'login.html';

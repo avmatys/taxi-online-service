@@ -65,7 +65,18 @@ function taxiBooking(data) {
 
     }).fail(function (jqXHR, textStatus, errorThrown) {
         //TODO notification
-        alert('error');
+        if(jqXHR.status === 400){
+            alert("Bad request");
+        }
+        if(jqXHR.status === 401){
+            alert("Unauthorized");
+        }
+        if(jqXHR.status === 404){
+            alert("Not Found");
+        }
+        if(jqXHR.status === 500){
+            alert("Internal server error");
+        }
         $('.alert.danger').html('<span class="closebtn" onclick="toggle()">&times;</span><strong>Ошибочка!</strong> Нельзя заказать такси!').show();
     });
 }
@@ -87,14 +98,56 @@ function findActiveBooking() {
 
     }).done(function (data, textStatus, jqXHR) {
         if(data.status === "0") {
-            $('.options__current_order>p').html("Из " + data.data.route.start_address.address + " в " + data.data.route.end_address.address + ". " + data.data.cost + " руб.");
+            $('.options__current_order>p.order_info').html("Из " + data.data.route.start_address.address + " в " + data.data.route.end_address.address + ". " + data.data.cost + " руб.");
+            $('.options__current_order>p.current_order_id').html(data.data.id);
         }
 
     }).fail(function (jqXHR, textStatus, errorThrown) {
-        //TODO notification
-        alert('error');
+        //TODO notification 'У вас нет заказов, сделайте заказ у нас' или вообще не надо
+        if(jqXHR.status === 401){
+            alert("Unauthorized");
+        }
+        if(jqXHR.status === 404){
+            alert("Not Found");
+        }
     });
 }
+
+// Function for find active booking for user
+// param: id - id of the booking
+function cancelCurrentOrder(id) {
+    $.ajax({
+        dataType: 'json',
+        contentType: "application/json; charset=utf-8",
+        timeout: 10000,
+        type: 'PUT',
+        beforeSend: function(xhr){
+            var user = JSON.parse(Cookies.get('user-info'));
+            xhr.setRequestHeader("Authorization",
+                "Basic " + btoa(user.username + ":" + user.password));
+        },
+        url: 'http://localhost:8080/taxi-online-service/api/v1/booking/'+id+'/cancel/'
+
+    }).done(function (data, textStatus, jqXHR) {
+        if(data.status === "0") {
+            $('.options__current_order>p.order_info').html("Заказов не найдено");
+            $('.options__current_order>p.current_order_id').html(" ");
+        }
+
+    }).fail(function (jqXHR, textStatus, errorThrown) {
+        //TODO notification 'Упс, при отмене произошла ошибка'
+        if(jqXHR.status === 400){
+            alert("Bad request");
+        }
+        if(jqXHR.status === 401){
+            alert("Unauthorized");
+        }
+        if(jqXHR.status === 404){
+            alert("Not Found");
+        }
+    });
+}
+
 
 //-----Special utils for REST client-----//
 
