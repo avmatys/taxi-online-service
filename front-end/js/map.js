@@ -176,7 +176,7 @@ function calculateRoute(start, end) {
             totalDistance = totalDistance / KILOMETER;
             totalDuration = totalDuration / MINUTE;
 
-            showRouteInfo(totalDistance, totalDuration, calculateTripCost(totalDistance, totalDuration));
+            showRouteInfo(totalDistance, totalDuration, calculateTripCost(totalDistance));
         }
     });
 }

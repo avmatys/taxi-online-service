@@ -20,6 +20,11 @@ jQuery(document).ready(function ($) {
                 alert("У вас нет заказа");
             }
         });
+        //Add event listener to a table header (booking history)
+        $('#history_link').click(function(){
+            return findBookingHistory();
+        });
+
     }
     else{
         window.location.href = 'login.html';
