@@ -24,6 +24,10 @@ jQuery(document).ready(function ($) {
         $('#history_link').click(function(){
             return findBookingHistory();
         });
+        //Add event listener to a table header (generate report)
+        $('#order_link').click(function(){
+            return generateReport();
+        });
 
     }
     else{

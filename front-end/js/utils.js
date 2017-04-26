@@ -204,13 +204,76 @@ function findBookingHistory() {
         for(var i = 0 ; i < orders.length; i++) {
             $('#history_table > tbody:last-child').append("<tr><td>" + BOOKING_STATE_DICTIONARY[orders[i].state] + "</td><td>"
                 + new Date(orders[i].timestamp).toLocaleDateString() + "</td><td>"
-                + new Date(orders[i].timestamp).toLocaleDateString()+ "</td><td>"
                 + orders[i].route.start_address.address + "</td><td>"
                 + orders[i].route.end_address.address + "</td><td>"
-                + orders[i].cost + "руб.</td></tr>");
+                + orders[i].route.distance/1000.0 + " км." + "</td><td>"
+                + orders[i].cost + "руб."+ "</td></tr>");
         }
 
 
+
+    }).fail(function (jqXHR, textStatus, errorThrown) {
+        //TODO notification 'Упс, загрузке произошла ошибка'
+        if (jqXHR.status === 401) {
+            alert("Unauthorized");
+        }
+    });
+    //Need for <a href="" ...></a> to disable hyperlink
+    //return false;
+}
+// Function for finding booking history
+function generateReport() {
+    $.ajax({
+        dataType: 'json',
+        contentType: "application/json; charset=utf-8",
+        timeout: 10000,
+        type: 'GET',
+        beforeSend: function (xhr) {
+            var user = JSON.parse(Cookies.get('user-info'));
+            xhr.setRequestHeader("Authorization",
+                "Basic " + btoa(user.username + ":" + user.password));
+        },
+        url: 'http://localhost:8080/taxi-online-service/api/v1/booking/'
+
+    }).done(function (data, textStatus, jqXHR) {
+        //Сreate report
+        var docDefinition = {
+            header: function(currentPage, pageCount) {
+                return { text: 'Отчет заказов такси для пользователя ' + JSON.parse(Cookies.get('user-info')).family_name + " " + JSON.parse(Cookies.get('user-info')).common_name, style: 'header' };
+            },
+            footer: function(currentPage, pageCount) { return {text: currentPage.toString() + ' из ' + pageCount, style: 'footer'};
+            },
+
+            pageSize:'A4',
+            pageOrientation:'portrait',
+            pageMargins:[50,60,30,30],
+
+            content: [
+                {
+                    table: {
+                        headerRows: 1,
+                        widths: [ "11%", "13%", "27%", "27%", "8%", "14%"],
+                        body: createReportData(data)
+                    }
+                }
+            ],
+            styles: {
+                header: {
+                    fontSize: 18,
+                    bold: true,
+                    italic: true,
+                    alignment:'center',
+                    margin: [0, 20, 0,20]
+                },
+                footer: {
+                    fontSize: 12,
+                    italic: true,
+                    alignment: 'center'
+                }
+            }
+        };
+        // Download the PDF
+        pdfMake.createPdf(docDefinition).download(JSON.parse(Cookies.get('user-info')).username+'_'+'taxi_report.pdf');
 
     }).fail(function (jqXHR, textStatus, errorThrown) {
         //TODO notification 'Упс, загрузке произошла ошибка'
@@ -268,4 +331,23 @@ function calculateTripCost(distance) {
     var kilometerCost = 0.7;
 
     return distance * kilometerCost + pickUpCost;
+}
+
+//Util for creating data for report
+// param: data - input data from server
+function createReportData(data){
+    var reportData = [
+        [ 'Статус', 'Дата', 'Точка отправления', 'Точка назначения', 'Расст.', 'Стоимость' ],
+    ];
+    var orders = data.data;
+    for(var i = 0 ; i < orders.length; i++) {
+        reportData.push([ BOOKING_STATE_DICTIONARY[orders[i].state],
+            new Date(orders[i].timestamp).toLocaleDateString(),
+            orders[i].route.start_address.address,
+            orders[i].route.end_address.address,
+            orders[i].route.distance/1000.0 + " км.",
+            orders[i].cost + "руб."
+        ]);
+    }
+    return reportData;
 }

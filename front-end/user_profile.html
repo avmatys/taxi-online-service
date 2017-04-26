@@ -78,7 +78,7 @@
 								<ul class="dropdown-menu">
 									<li><a href="#">Сгенерировать отчет</a></li>
 									<li><a href="#">Изменить пароль</a></li>
-									<li><a href="#">Выйти</a></li>
+									<li><a href="#" onclick="return logout();">Выйти</a></li>
 								</ul>
 							</div>
 							<div class="options__current_order">
@@ -114,7 +114,7 @@
 						<h3>Отчет</h3>
 						<div class="report">
 							<img src="fonts/flaticons/svg/copy.svg" width="75px" height="75px" alt="">
-							<button class="btn__interface">Сгенерировать</button>
+							<button class="btn__interface" id="order_link">Сгенерировать</button>
 						</div>
 
 					</div>
@@ -158,7 +158,10 @@
     {"src" : "libs/jquery/jquery-1.11.2.min.js", "async" : false},
     {"src" : "libs/bootstrap/js/bootstrap.min.js", "async" : false},
     {"src" : "libs/plugins-scroll/plugins-scroll.js", "async" : false},
+    {"src" : "libs/pdfmake/pdfmake.min.js", "async" : false},
+    {"src" : "libs/pdfmake/vfs_fonts.js", "async" : false},
     {"src" : "libs/cookie/js.cookie.js", "async" : false},
+
     {"src" : "js/utils.js", "async" : false},
     {"src" : "js/user_profile.js", "async" : false},
     {"src" : "js/common.js", "async" : false}
