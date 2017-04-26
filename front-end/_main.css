@@ -42,7 +42,7 @@ a:hover,a:focus,a:active{
 	display: block;
 	max-width:350px;
 	width: 100%;
-	top: 130px;
+	top: 65px;
 	right: 30px;
 
 }
@@ -250,6 +250,8 @@ a:hover,a:focus,a:active{
 	border-bottom-left-radius: 5px;
 	border-bottom-right-radius: 5px;
 	text-align: center;
+	max-height: 450px;
+	overflow: auto;
 }
 
 .alert {
