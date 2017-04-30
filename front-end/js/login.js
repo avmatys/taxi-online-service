@@ -18,6 +18,15 @@ var AuthorizationWrapper = function () {
     };
 
     /**
+     * Function for login feature
+     */
+    function login(){
+        var accountInformation = JSON.stringify(createAuthorizationJSONData());
+        var ajaxWrapper = AjaxWrapper();
+        ajaxWrapper.ajaxRequest(accountInformation, properties.defaultDataType, properties.defaultContentType, properties.defaultTimeOut, "POST", function () {
+        }, properties.loginUrl, authorizationDone, authorizationFail);
+    }
+    /**
      * Function for handling successful authorization
      * @param data - account information
      */
@@ -61,11 +70,8 @@ var AuthorizationWrapper = function () {
     }
 
     return {
-        createAuthorizationJSONData: createAuthorizationJSONData,
-        createUserCookie: createUserCookie,
-        authorizationDone: authorizationDone,
-        authorizationFail: authorizationFail,
-        properties: properties
+        login:login,
+        properties:properties
     }
 }();
 
@@ -82,9 +88,6 @@ jQuery(document).ready(function ($) {
     //TODO validation
     $('#form_login').submit(function (event) {
         event.preventDefault();
-        var accountInformation = JSON.stringify(AuthorizationWrapper.createAuthorizationJSONData());
-        var ajaxWrapper = AjaxWrapper();
-        ajaxWrapper.ajaxRequest(accountInformation, AuthorizationWrapper.properties.defaultDataType, AuthorizationWrapper.properties.defaultContentType, AuthorizationWrapper.properties.defaultTimeOut, "POST", function () {
-        }, AuthorizationWrapper.properties.loginUrl, AuthorizationWrapper.authorizationDone, AuthorizationWrapper.authorizationFail);
+        AuthorizationWrapper.login();
     });
 });
