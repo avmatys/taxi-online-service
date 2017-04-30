@@ -16,10 +16,6 @@ var LogoutWrapper = function(){
         'userCookieName': 'user-info',
 
         'indexLink': 'index.html',
-        'orderLink': 'order.html',
-        'loginLink': 'login.html',
-        'userProfileLink': 'user_profile.html',
-        'driverProfileLink': 'driver_profile.html',
 
         'Error_400': 'Ошибка. Неккоретный запрос',
         'Error_401': 'Ошибка. Пользователь не авторизован',

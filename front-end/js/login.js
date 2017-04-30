@@ -31,6 +31,7 @@ var AuthorizationWrapper = function () {
         ajaxWrapper.ajaxRequest(accountInformation, properties.defaultDataType, properties.defaultContentType, properties.defaultTimeOut, "POST", function () {
         }, properties.loginUrl, authorizationDone, authorizationFail);
     }
+
     /**
      * Function for handling successful authorization
      * @param data - account information
