@@ -2,81 +2,8 @@
 
 //----Functions for working with REST web-service----//
 
-//Logout function
-function logout() {
-    if (!!Cookies.get('user-info')) {
-        var user = JSON.parse(Cookies.get('user-info'));
-        var data = {
-            'username': user.username,
-            'password': user.password
-        };
-        Cookies.remove('user-info');
-        $.ajax({
-            data: JSON.stringify(data),
-            dataType: 'json',
-            contentType: "application/json; charset=utf-8",
-            timeout: 10000,
-            type: 'POST',
-            url: 'http://localhost:8080/taxi-online-service/api/v1/auth/logout/'
 
-        }).done(function (data, textStatus, jqXHR) {
-            //Everything is all right
-            //Redirect
-            window.location.href = 'index.html';
-        }).fail(function (jqXHR, textStatus, errorThrown) {
-            //TODO notification
-            if (jqXHR.status === 400) {
-                alert("Bad request");
-            }
-            if (jqXHR.status === 401) {
-                alert("Unauthorized");
-            }
-        });
-    }
-    else {
-        window.location.href = 'login.html';
-    }
-    //Need for <a href="" ...></a> to disable hyperlink
-    return false;
-}
 
-// Function for taxi booking
-// param - data is used for storing user login and passwor
-function taxiBooking(data) {
-    $.ajax({
-        data: data,
-        dataType: 'json',
-        contentType: "application/json; charset=utf-8",
-        timeout: 10000,
-        type: 'POST',
-        beforeSend: function (xhr) {
-            var user = JSON.parse(Cookies.get('user-info'));
-            xhr.setRequestHeader("Authorization",
-                "Basic " + btoa(user.username + ":" + user.password));
-        },
-        url: 'http://localhost:8080/taxi-online-service/api/v1/booking/'
-
-    }).done(function (data, textStatus, jqXHR) {
-        //TODO message
-        window.location.href = "user_profile.html";
-
-    }).fail(function (jqXHR, textStatus, errorThrown) {
-        //TODO notification
-        if (jqXHR.status === 400) {
-            alert("Bad request");
-        }
-        if (jqXHR.status === 401) {
-            alert("Unauthorized");
-        }
-        if (jqXHR.status === 404) {
-            alert("Not Found");
-        }
-        if (jqXHR.status === 500) {
-            alert("Internal server error");
-        }
-        $('.alert.danger').html('<span class="closebtn" onclick="toggle()">&times;</span><strong>Ошибочка!</strong> Нельзя заказать такси!').show();
-    });
-}
 function beforeSend(xhr){
     var user = JSON.parse(Cookies.get('user-info'));
     xhr.setRequestHeader("Authorization",
@@ -90,11 +17,11 @@ function findActiveBooking() {
         contentType: "application/json; charset=utf-8",
         timeout: 10000,
         type: 'GET',
-        beforeSend: /*function (xhr) {
+        beforeSend: function (xhr) {
             var user = JSON.parse(Cookies.get('user-info'));
             xhr.setRequestHeader("Authorization",
                 "Basic " + btoa(user.username + ":" + user.password));
-        }*/ beforeSend,
+        },
         url: 'http://localhost:8080/taxi-online-service/api/v1/booking/active/'
 
     }).done(function (data, textStatus, jqXHR) {
@@ -397,13 +324,6 @@ function createAuthorizationHeader(xhr, data) {
 
 
 
-// Util for creating JSON booking data
-function createTaxiBookingJSONData() {
-    var json = getRouteInformaton();
-    json.passenger_username = JSON.parse(Cookies.get('user-info')).username;
-    json.number_passengers = $('#numberPassengers').val();
-    return json;
-}
 
 
 

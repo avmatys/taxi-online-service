@@ -1,3 +1,8 @@
+/**
+ * Represent authorization functionality
+ * @type {{login, properties}}
+ * @constructor
+ */
 var AuthorizationWrapper = function () {
 
     var properties = {
@@ -43,7 +48,7 @@ var AuthorizationWrapper = function () {
      */
     function authorizationFail(jqXHR) {
         console.log("Error: " + jqXHR.status + ", " + jqXHR.statusText);
-        alert(authorizationError);
+        alert(properties.authorizationError);
     }
 
     /**

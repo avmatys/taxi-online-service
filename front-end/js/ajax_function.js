@@ -1,3 +1,8 @@
+/**
+ * Represent ajax request function
+ * @returns {{ajaxRequest: ajaxRequest}}
+ * @constructor
+ */
 var AjaxWrapper = function(){
     /**
      * Function is used for sending ajax requests to REST web service
