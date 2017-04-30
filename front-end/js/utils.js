@@ -200,16 +200,31 @@ function findBookingHistory() {
     }).done(function (data, textStatus, jqXHR) {
         //Сlear table
         $('#history_table > tbody > tr').remove();
-        var orders = data.data;
-        for(var i = 0 ; i < orders.length; i++) {
-            $('#history_table > tbody:last-child').append("<tr><td>" + BOOKING_STATE_DICTIONARY[orders[i].state] + "</td><td>"
-                + new Date(orders[i].timestamp).toLocaleDateString() + "</td><td>"
-                + orders[i].route.start_address.address + "</td><td>"
-                + orders[i].route.end_address.address + "</td><td>"
-                + orders[i].route.distance/1000.0 + " км." + "</td><td>"
-                + orders[i].cost + "руб."+ "</td></tr>");
-        }
+        if(JSON.parse(Cookies.get('user-info')).role === "PASSENGER") {
+            var orders = data.data;
+            for (var i = 0; i < orders.length; i++) {
+                $('#history_table > tbody:last-child').append("<tr><td>" + BOOKING_STATE_DICTIONARY[orders[i].state] + "</td><td>"
+                    + new Date(orders[i].timestamp).toLocaleDateString() + "</td><td>"
+                    + orders[i].route.start_address.address + "</td><td>"
+                    + orders[i].route.end_address.address + "</td><td>"
+                    + orders[i].route.distance / 1000.0 + " км." + "</td><td>"
+                    + orders[i].cost + "руб." + "</td></tr>");
+            }
 
+        }
+        else{
+            var orders = data.data;
+            for (var i = 0; i < orders.length; i++) {
+                var button = (orders[i].state==='TAXI_DISPATCHED')?generatePickUpButtonIntoTable(orders[i].id):(orders[i].state==='PASSENGER_PICKED_UP')?generateDropOffButtonIntoTable(orders[i].id):"";
+
+                $('#history_table > tbody:last-child').append("<tr><td>" + BOOKING_STATE_DICTIONARY[orders[i].state] + "</td><td>"
+                    + new Date(orders[i].timestamp).toLocaleDateString() + " " + new Date(orders[i].timestamp).toLocaleTimeString() + "</td><td>"
+                    + orders[i].route.start_address.address + "</td><td>"
+                    + orders[i].route.end_address.address + "</td><td>"
+                    + orders[i].route.distance / 1000.0 + " км." + "</td><td>"
+                    + orders[i].cost + "руб. </td>" + button +"</tr>");
+            }
+        }
 
 
     }).fail(function (jqXHR, textStatus, errorThrown) {
@@ -221,6 +236,7 @@ function findBookingHistory() {
     //Need for <a href="" ...></a> to disable hyperlink
     //return false;
 }
+
 // Function for finding booking history
 function generateReport() {
     $.ajax({
@@ -349,6 +365,52 @@ function acceptBooking(id) {
     //return false;
 }
 
+// Function for pick up passenger
+// param: id - id of booking
+function pickUpPassengerTaxi(id) {
+    $.ajax({
+        dataType: 'json',
+        contentType: "application/json; charset=utf-8",
+        type: 'PUT',
+        beforeSend: function (xhr) {
+            var user = JSON.parse(Cookies.get('user-info'));
+            xhr.setRequestHeader("Authorization",
+                "Basic " + btoa(user.username + ":" + user.password));
+        },
+        url: 'http://localhost:8080/taxi-online-service/api/v1/booking/'+ id + '/pickuppassenger/'
+
+    }).done(function (data, textStatus, jqXHR) {
+        alert("done")
+    }).fail(function (jqXHR, textStatus, errorThrown) {
+        alert("fail")
+    });
+    //Need for <a href="" ...></a> to disable hyperlink
+    //return false;
+}
+
+// Function for pick up passenger
+// param: id - id of booking
+function dropOffPassengerTaxi(id) {
+    $.ajax({
+        dataType: 'json',
+        contentType: "application/json; charset=utf-8",
+        type: 'PUT',
+        beforeSend: function (xhr) {
+            var user = JSON.parse(Cookies.get('user-info'));
+            xhr.setRequestHeader("Authorization",
+                "Basic " + btoa(user.username + ":" + user.password));
+        },
+        url: 'http://localhost:8080/taxi-online-service/api/v1/booking/'+ id + '/dropoffpassenger/'
+
+    }).done(function (data, textStatus, jqXHR) {
+        alert("done")
+    }).fail(function (jqXHR, textStatus, errorThrown) {
+        alert("fail")
+    });
+    //Need for <a href="" ...></a> to disable hyperlink
+    //return false;
+}
+
 
 //-----Special utils for REST client-----//
 
@@ -422,6 +484,18 @@ function generateButtonIntoTable(id){
     return '<td><button onclick="acceptTaxi()" id="' + id + '">Принять заказ</button></td>'
 }
 
+//Function for generationg button
+// param: id - id of the booking awaiting taxi
+function generatePickUpButtonIntoTable(id){
+    return '<td><button onclick="pickUpPassenger()" id="pickup' + id + '">Посадка пассажира</button></td>'
+}
+
+//Function for generationg button
+// param: id - id of the booking awaiting taxi
+function generateDropOffButtonIntoTable(id){
+    return '<td><button onclick="dropOffPassenger()" id="dropoff' + id + '">Высадка пассажира</button></td>'
+}
+
 //Function for accepting booking
 // param: e - event onclick href
 function acceptTaxi(e){
@@ -429,5 +503,24 @@ function acceptTaxi(e){
     e = e.target || e.srcElement;
     if (e.nodeName === 'BUTTON'){
         acceptBooking(e.id);
+    }
+}
+
+//Function for accepting booking
+// param: e - event onclick href
+function pickUpPassenger(e){
+    e = e || window.event;
+    e = e.target || e.srcElement;
+    if (e.nodeName === 'BUTTON'){
+        pickUpPassengerTaxi(parseInt(e.id.replace ( /[^\d.]/g, '' ),10));
+    }
+}
+//Function for accepting booking
+// param: e - event onclick href
+function dropOffPassenger(e){
+    e = e || window.event;
+    e = e.target || e.srcElement;
+    if (e.nodeName === 'BUTTON'){
+        dropOffPassengerTaxi(parseInt(e.id.replace ( /[^\d.]/g, '' ),10));
     }
 }
