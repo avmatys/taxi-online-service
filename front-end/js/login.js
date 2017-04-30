@@ -1,17 +1,90 @@
-// Add event handler for submit form event
-// Functions are described in file utils.js
+var AuthorizationWrapper = function () {
+
+    var properties = {
+        'loginUrl': 'http://localhost:8080/taxi-online-service/api/v1/auth/login/',
+
+        'defaultContentType': 'application/json; charset=utf-8',
+        'defaultDataType': 'JSON',
+        'defaultTimeOut': 8000,
+
+        'userCookieName': 'user-info',
+
+        'indexLink': 'index.html',
+        'orderLink': 'order.html',
+        'loginLink': 'login.html',
+        'userProfileLink': 'user_profile.html',
+        'driverProfileLink': 'driver_profile.html',
+        'authorizationError': 'Ошибка авторизации. Проверьте правильность введенных данных'
+    };
+
+    /**
+     * Function for handling successful authorization
+     * @param data - account information
+     */
+    function authorizationDone(data) {
+        createUserCookie(data);
+        var role = data.data.role;
+        var redirectPage = (role === "PASSENGER") ? properties.userProfileLink : (role === "DRIVER") ? properties.driverProfileLink : properties.indexLink;
+        window.location.href = redirectPage;
+    }
+
+    /**
+     * Function for handling authorization failure
+     * @param jqXHR
+     */
+    function authorizationFail(jqXHR) {
+        console.log("Error: " + jqXHR.status + ", " + jqXHR.statusText);
+        alert(authorizationError);
+    }
+
+    /**
+     * Function for saving account data into cookie
+     * @param data - account information
+     */
+    function createUserCookie(data) {
+        data.data.password = $('#password').val();
+        Cookies.set(properties.userCookieName, JSON.stringify(data.data));
+    }
+
+    /**
+     * Function for creating account login and password
+     * @returns {{
+     *             username: account login ,
+     *             password: account password
+     *          }}
+     */
+    function createAuthorizationJSONData() {
+        return {
+            'username': $('#username').val(),
+            'password': $('#password').val()
+        }
+    }
+
+    return {
+        createAuthorizationJSONData: createAuthorizationJSONData,
+        createUserCookie: createUserCookie,
+        authorizationDone: authorizationDone,
+        authorizationFail: authorizationFail,
+        properties: properties
+    }
+}();
+
+
 jQuery(document).ready(function ($) {
-    //Change links
-    var link = "login.html";
-    if (!!Cookies.get('user-info')) {
-        //Have cookie
-        link="order.html";
+
+    //Create link according cookie data
+    var link = AuthorizationWrapper.properties.loginLink;
+    if (!!Cookies.get(AuthorizationWrapper.properties.userCookieName)) {
+        link = AuthorizationWrapper.properties.orderLink;
     }
     $('.taxi-options>a:first').attr("href", link);
 
     //TODO validation
     $('#form_login').submit(function (event) {
         event.preventDefault();
-        authorization(JSON.stringify(createAuthorizationJSONData()));
+        var accountInformation = JSON.stringify(AuthorizationWrapper.createAuthorizationJSONData());
+        var ajaxWrapper = AjaxWrapper();
+        ajaxWrapper.ajaxRequest(accountInformation, AuthorizationWrapper.properties.defaultDataType, AuthorizationWrapper.properties.defaultContentType, AuthorizationWrapper.properties.defaultTimeOut, "POST", function () {
+        }, AuthorizationWrapper.properties.loginUrl, AuthorizationWrapper.authorizationDone, AuthorizationWrapper.authorizationFail);
     });
 });
