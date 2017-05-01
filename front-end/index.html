@@ -39,7 +39,7 @@
 				<div class="logo">zuber</div>
 					<nav class="taxi-options">
 						<a href="#">Заказать такси</a>
-						<a href="#">Тарифы</a>
+						<a href="#prices">Тарифы</a>
 						<a href="#">Zuber для водителей</a>
 						<a href="#">Правила</a>
 					</nav>
@@ -61,22 +61,79 @@
 						<div class="head-wrap">
 							<h1>Онлайн сервис заказа такси ZUBER</h1>
 							<p>Такси ZUBER – это такси нового поколения. Мы отказались от диспетчеров и телефонных ожиданий и принимаем все заказы онлайн. Поэтому возим наших клиентов по низким тарифам!</p>
-							<button class="btn__order";">Заказать такси</button>
+							<button class="btn__order">Заказать такси</button>
 						</div>
 					</div>
 				</div>
 			</div>
 		</section>
-		<section>
+		<section id="prices" class="plans">
 			<div class="container">
+				<h1 class="heading">Тарифы</h1>
 				<div class="row">
-					<div class="col-sm-12">
-						<div class="map">
-							
+					<div class="table text-center">
+						<div class="line first">
+							<div class="row">
+								<div class="col-sm-5 name">В городе</div>
+								<div class="col-sm-4 value">
+									<span class="currency">0 р. 85 к.</span>
+								</div>
+								<div class="col-sm-3 meta">
+								</div>
+							</div>
+							<hr>
 						</div>
-						<div class="order_form">
-							
+						<div class="line">
+							<div class="row">
+								<div class="col-sm-5 name">За городом</div>
+								<div class="col-sm-4 value">
+									<span class="currency">0 р. 85 к.</span>
+								</div>
+								<div class="col-sm-3 meta">
+									<strong class="text-danger">Специальное предложение</strong>
+								</div>
+							</div>
+							<hr>
 						</div>
+						<div class="line">
+							<div class="row">
+								<div class="col-sm-5 name">Час простоя</div>
+								<div class="col-sm-4 value">
+									<span class="currency">8 р. 50 к.</span>
+								</div>
+								<div class="col-sm-3 meta">
+								</div>
+							</div>
+							<hr>
+						</div>
+						<div class="line last">
+							<div class="row">
+								<div class="col-sm-5 name">Посадка</div>
+								<div class="col-sm-4 value">
+									<span class="currency">6 р. 00 к.</span>
+								</div>
+								<div class="col-sm-3">
+									<div class="text-gray">
+										Включены первые <br>2 км поездки
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="line inverse">
+							<div class="row">
+								<div class="col-sm-5 name">Аэропорт<span> *</span></div>
+								<div class="col-sm-4 value">
+									<span class="currency">39 р. 00 к.</span>
+
+								</div>
+								<div class="col-sm-3 meta">
+									<div class="text-gray">
+										Включены первые <br>60 км поездки
+									</div>&lt;
+								</div>
+							</div>
+						</div>
+						<p class="description ">Возможен наличный и безналичный расчет.</p>
 					</div>
 				</div>
 			</div>
@@ -120,7 +177,7 @@
 
         {"src" : "js/ajax_function.js", "async" : false},
         {"src" : "js/logout.js", "async" : false},
-        {"src" : "js/index.js", "async" : false},
+        {"src" : "js/index.js", "async" : false}
 
 		]};!function(t,n,r){"use strict";var c=function(t){if("[object Array]"!==Object.prototype.toString.call(t))return!1;for(var r=0;r<t.length;r++){var c=n.createElement("script"),e=t[r];c.src=e.src,c.async=e.async,n.body.appendChild(c)}return!0};t.addEventListener?t.addEventListener("load",function(){c(r.scripts);},!1):t.attachEvent?t.attachEvent("onload",function(){c(r.scripts)}):t.onload=function(){c(r.scripts)}}(window,document,scr);
 	</script>
