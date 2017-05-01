@@ -205,3 +205,12 @@ function getRouteInformaton(){
         return route;
     }
 }
+
+function calculateTripCost(distance) {
+
+    //Define variables
+    var pickUpCost = 3.5;
+    var kilometerCost = 0.7;
+
+    return distance * kilometerCost + pickUpCost;
+}

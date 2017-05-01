@@ -7,7 +7,9 @@ jQuery(document).ready(function ($) {
         //Add link to a user page
         $('.auth>a:first').html('<i class="flaticon-avatar"></i>' + ' Личный кабинет').attr("href", userPage);
         $('.auth>a:last').html('<i class="flaticon-logout"></i>' + ' Выход').attr("href", " ").click(function(){
-            return logout();
+            var logoutWrapper = LogoutWrapper();
+            logoutWrapper.logout();
+            return false;
         });
         //Add link to order a taxi
         $('.btn__order').click(function(){
