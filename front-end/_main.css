@@ -391,4 +391,15 @@ a:hover,a:focus,a:active{
 	background: transparent;
 	padding-top: 50px
 }
+.about-us article h3{
+	font-size: 36px;
+	line-height: 50px;
+	margin-top: 0;
+	margin-bottom: 40px
+}
+.about-us article p{
+	font-size: 22px;
+	line-height: 36px;
+	margin-bottom: 40px
+}
 

@@ -29,6 +29,14 @@
 	.plans .table > div.line .meta {
 		font-size: 18px
 	}
+	.about-us article h3 {
+		font-size: 24px;
+		line-height: 40px;
+	}
+	.about-us article p{
+		font-size: 16px;
+		line-height: 20px;
+	}
 }
 
 /* Small Devices, Tablets */
