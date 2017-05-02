@@ -306,3 +306,100 @@ a:hover,a:focus,a:active{
 	display: block;
 	margin: 10px auto;
 }
+
+.plans {
+	padding: 50px 0
+}
+.plans .table{
+	padding: 50px;
+	margin: 0;
+}
+
+.heading {
+	color: #000000;
+	font-weight: bold;
+	font-size: 60px;
+	text-align: center
+}
+
+.plans .table {
+	padding: 50px;
+	margin: 0
+}
+
+.plans .table > div.line {
+	background: #F6F6F6;
+	padding: 0 70px 30px
+}
+
+.plans .table > div.line hr {
+	border-bottom: 1px solid #D5D5D5;
+	margin: 30px 0 0
+}
+
+.plans .table > div.line .name {
+	color: #999999;
+	font-size: 40px;
+	font-weight: bold;
+	line-height: 40px
+}
+
+.plans .table > div.line .value {
+	color: #000000;
+	font-weight: bold;
+	font-size: 40px;
+	line-height: 40px
+}
+
+.plans .table > div.line .value .preloader {
+	display: inline-block;
+	height: 40px;
+	margin: 0 10px
+}
+
+.plans .table > div.line .value .currency.secondary {
+	font-size: 0.6em;
+	display: block;
+	color: #999999
+}
+
+.plans .table > div.line .meta {
+	color: #999999;
+	font-size: 20px;
+	line-height: 22px
+}
+
+.plans .table > div.line .meta .preloader {
+	display: inline-block;
+	height: 20px;
+	margin: 0 10px
+}
+
+.plans .table > div.line.first {
+	border-top-left-radius: 20px;
+	border-top-right-radius: 20px;
+	padding-top: 50px
+}
+
+.plans .table > div.line.last {
+	border-bottom-left-radius: 20px;
+	border-bottom-right-radius: 20px;
+	padding-bottom: 50px
+}
+
+.plans .table > div.line.inverse {
+	background: transparent;
+	padding-top: 50px
+}
+.about-us article h3{
+	font-size: 36px;
+	line-height: 50px;
+	margin-top: 0;
+	margin-bottom: 40px
+}
+.about-us article p{
+	font-size: 22px;
+	line-height: 36px;
+	margin-bottom: 40px
+}
+
