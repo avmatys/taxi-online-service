@@ -8,12 +8,12 @@
 
 	<meta charset="utf-8">
 
-	<title>Заголовок</title>
+	<title>Профиль - ZUBER</title>
 	<meta name="description" content="">
 
 	<!-- Fonts Loader from _fonts.css (HTML5 LocalStorage) -->
 	<script>!function(){function e(e,t,n){e.addEventListener?e.addEventListener(t,n,!1):e.attachEvent&&e.attachEvent("on"+t,n)}function t(e){return window.localStorage&&localStorage.font_css_cache&&localStorage.font_css_cache_file===e}function n(){if(window.localStorage&&window.XMLHttpRequest)if(t(o))a(localStorage.font_css_cache);else{var n=new XMLHttpRequest;n.open("GET",o,!0),e(n,"load",function(){4===n.readyState&&(a(n.responseText),localStorage.font_css_cache=n.responseText,localStorage.font_css_cache_file=o)}),n.send()}else{var c=document.createElement("link");c.href=o,c.rel="stylesheet",c.type="text/css",document.getElementsByTagName("head")[0].appendChild(c),document.cookie="font_css_cache"}}function a(e){var t=document.createElement("style");t.innerHTML=e,document.getElementsByTagName("head")[0].appendChild(t)}var o="_fonts.css";window.localStorage&&localStorage.font_css_cache||document.cookie.indexOf("font_css_cache")>-1?n():e(window,"load",n)}();</script>
-	
+
 	<!-- Load CSS Compilled without JS -->
 	<noscript><link rel="stylesheet" href="compiled.min.css"></noscript>
 
@@ -28,111 +28,148 @@
 </head>
 
 <body>
-	<header>
-		<div class="container-fluid">
-			<div class="row">
-				<div class="col-sm-8">
-					<div class="logo">zuber</div>
-					<nav>
-						<a href="order.html">Заказать такси</a>
-						<a href="#">Тарифы</a>
-						<a href="#">Zuber для водителей</a>
-						<a href="#">Правила</a>
-					</nav>
-				</div>
-				<div class="col-sm-4">
-					<div class="auth">
-						<a href="login.html"><i class="flaticon-avatar"></i> Войти</a>
-						<a href="register.html"><i class="flaticon-logout"></i> Регистрация</a>
-					</div>
+<header>
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-sm-8">
+				<div class="logo">zuber</div>
+				<nav>
+					<a href="order.html">Заказать такси</a>
+					<a href="#">Тарифы</a>
+					<a href="#">Zuber для водителей</a>
+					<a href="#">Правила</a>
+				</nav>
+			</div>
+			<div class="col-sm-4">
+				<div class="auth">
+					<a href="#"><i class="flaticon-logout"></i> Выход</a>
 				</div>
 			</div>
 		</div>
-	</header>
-	<main class="blured-bg">
-		<section class="container">
-				<div class="profile-wrap row">
-					<div class="col-sm-3 user_avatar">
-						<img src="http://placehold.it/200x200" alt="">
-					</div>
-					<div class="col-sm-9 info">
-						<div class="name">Александр Александрович</div>
-						<div class="login">username</div>
-					</div>
-				</div>
+	</div>
+</header>
+<main class="blured-bg">
+	<section class="container">
+		<div class="profile-wrap row">
+
+			<div class="col-sm-5 info">
+				<div class="name" id="name"></div>
+				<div class="login" id="login"></div>
+				<div class="email" id="email"></div>
+				<div class="phone_number" id="phone_number"></div>
+			</div>
+		</div>
 		</div>
 		<div class="row">
 			<div class="col-sm-12">
 				<ul class="nav nav-pills">
-					<li class="active"><a data-toggle="pill" href="#home">Home</a></li>
-					<li><a data-toggle="pill" href="#menu1">Menu 1</a></li>
-					<li><a data-toggle="pill" href="#menu2">Menu 2</a></li>
-					<li><a data-toggle="pill" href="#menu3">Menu 3</a></li>
+					<li class="active"><a data-toggle="pill" href="#home">Главная</a></li>
+					<li><a data-toggle="pill" href="#history" id="history_link">История поездок</a></li>
+					<li><a data-toggle="pill" href="#menu2">Отчет</a></li>
 				</ul>
 
 				<div class="tab-content">
 					<div id="home" class="tab-pane fade in active">
-						<h3>HOME</h3>
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+						<h3>Главная</h3>
+						<div class="options">
+
+							<div class="dropdown">
+								<img class="dropdown-toggle" data-toggle="dropdown" src="fonts/flaticons/svg/settings.svg" width="75px" height="75px" alt="" >
+								<ul class="dropdown-menu">
+									<li><a href="#">Сгенерировать отчет</a></li>
+									<li><a href="#">Изменить пароль</a></li>
+									<li><a href="#" onclick="return logout();">Выйти</a></li>
+								</ul>
+							</div>
+							<div class="options__current_order">
+								<h4>Текущий заказ</h4>
+								<p class="hidden current_order_id"></p>
+								<p class="order_info">Заказов не найдено. </p>
+								<button class="btn__interface" id="cancel_current_order">Отменить поездку</button>
+							</div>
+
+						</div>
 					</div>
-					<div id="menu1" class="tab-pane fade">
-						<h3>Menu 1</h3>
-						<p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+					<div id="history" class="tab-pane fade">
+						<h3>История поездок</h3>
+						<div class="table-responsive">
+							<table class="table" id="history_table">
+								<thead>
+								<tr>
+									<th>Статус</th>
+									<th>Дата</th>
+									<th>Точка отпавления</th>
+									<th>Точка назначения</th>
+									<th>Расстояние</th>
+									<th>Стоимость</th>
+								</tr>
+								</thead>
+								<tbody>
+
+								</tbody>
+							</table>
+						</div>
 					</div>
 					<div id="menu2" class="tab-pane fade">
-						<h3>Menu 2</h3>
-						<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
-					</div>
-					<div id="menu3" class="tab-pane fade">
-						<h3>Menu 3</h3>
-						<p>Eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+						<h3>Отчет</h3>
+						<div class="report">
+							<img src="fonts/flaticons/svg/copy.svg" width="75px" height="75px" alt="">
+							<button class="btn__interface" id="order_link">Сгенерировать</button>
+						</div>
+
 					</div>
 				</div>
 			</div>
 		</div>
-</section>
+	</section>
 </main>
 <!-- Здесь пишем код -->
 
 <div class="hidden"></div>
 
-	<!--[if lt IE 9]>
-	<script src="libs/html5shiv/es5-shim.min.js"></script>
-	<script src="libs/html5shiv/html5shiv.min.js"></script>
-	<script src="libs/html5shiv/html5shiv-printshiv.min.js"></script>
-	<script src="libs/respond/respond.min.js"></script>
-	<![endif]-->
+<!--[if lt IE 9]>
+<script src="libs/html5shiv/es5-shim.min.js"></script>
+<script src="libs/html5shiv/html5shiv.min.js"></script>
+<script src="libs/html5shiv/html5shiv-printshiv.min.js"></script>
+<script src="libs/respond/respond.min.js"></script>
+<![endif]-->
 
-	<!-- Load CSS -->
-	<script>
-		function loadCSS(hf) {
-			var ms=document.createElement("link");ms.rel="stylesheet";
-			ms.href=hf;document.getElementsByTagName("head")[0].appendChild(ms);
-		}
-		loadCSS("libs/bootstrap/css/bootstrap.min.css");
-		loadCSS("libs/animate/animate.css"); //Load Libs CSS: Animate CSS
-		loadCSS("fonts/flaticons/font/flaticon.css");
-		loadCSS("_header.css");              //Header Styles (compress & paste to header after release)
-		loadCSS("_main.css");                //User Styles: Main
-		loadCSS("_media.css");               //User Styles: Media
-	</script>
+<!-- Load CSS -->
+<script>
+    function loadCSS(hf) {
+        var ms=document.createElement("link");ms.rel="stylesheet";
+        ms.href=hf;document.getElementsByTagName("head")[0].appendChild(ms);
+    }
+    loadCSS("libs/bootstrap/css/bootstrap.min.css");
+    loadCSS("fonts/flaticons/font/flaticon.css");
+    loadCSS("_header.css");              //Header Styles (compress & paste to header after release)
+    loadCSS("_main.css");                //User Styles: Main
+    loadCSS("_media.css");               //User Styles: Media
+</script>
 
-	<!-- Load CSS compiled without Bootstrap & Header styles (after release) -->
-	<script>var ms=document.createElement("link");ms.rel="stylesheet";
-		// ms.href="compiled.min.css";document.getElementsByTagName("head")[0].appendChild(ms);
-	</script>
+<!-- Load CSS compiled without Bootstrap & Header styles (after release) -->
+<script>var ms=document.createElement("link");ms.rel="stylesheet";
+// ms.href="compiled.min.css";document.getElementsByTagName("head")[0].appendChild(ms);
+</script>
 
-	<!-- Load Scripts -->
-	<script>var scr = {"scripts":[
-		{"src" : "libs/modernizr/modernizr.js", "async" : false},
-		{"src" : "libs/jquery/jquery-1.11.2.min.js", "async" : false},
-		{"src" : "libs/bootstrap/js/bootstrap.min.js", "async" : false},
-		{"src" : "libs/waypoints/waypoints.min.js", "async" : false},
-		{"src" : "libs/animate/animate-css.js", "async" : false},
-		{"src" : "libs/plugins-scroll/plugins-scroll.js", "async" : false},
-		{"src" : "js/common.js", "async" : false}
-		]};!function(t,n,r){"use strict";var c=function(t){if("[object Array]"!==Object.prototype.toString.call(t))return!1;for(var r=0;r<t.length;r++){var c=n.createElement("script"),e=t[r];c.src=e.src,c.async=e.async,n.body.appendChild(c)}return!0};t.addEventListener?t.addEventListener("load",function(){c(r.scripts);},!1):t.attachEvent?t.attachEvent("onload",function(){c(r.scripts)}):t.onload=function(){c(r.scripts)}}(window,document,scr);
-	</script>
+<!-- Load Scripts -->
+<script>var scr = {"scripts":[
+    {"src" : "libs/modernizr/modernizr.js", "async" : false},
+    {"src" : "libs/jquery/jquery-1.11.2.min.js", "async" : false},
+    {"src" : "libs/bootstrap/js/bootstrap.min.js", "async" : false},
+    {"src" : "libs/plugins-scroll/plugins-scroll.js", "async" : false},
+    {"src" : "libs/pdfmake/pdfmake.min.js", "async" : false},
+    {"src" : "libs/pdfmake/vfs_fonts.js", "async" : false},
+    {"src" : "libs/cookie/js.cookie.js", "async" : false},
+
+    {"src" : "js/ajax_function.js", "async" : false},
+    {"src" : "js/account.js", "async" : false},
+    {"src" : "js/logout.js", "async" : false},
+    {"src" : "js/user_profile.js", "async" : false},
+    {"src" : "js/common.js", "async" : false}
+
+]};!function(t,n,r){"use strict";var c=function(t){if("[object Array]"!==Object.prototype.toString.call(t))return!1;for(var r=0;r<t.length;r++){var c=n.createElement("script"),e=t[r];c.src=e.src,c.async=e.async,n.body.appendChild(c)}return!0};t.addEventListener?t.addEventListener("load",function(){c(r.scripts);},!1):t.attachEvent?t.attachEvent("onload",function(){c(r.scripts)}):t.onload=function(){c(r.scripts)}}(window,document,scr);
+</script>
 
 </body>
 </html>
