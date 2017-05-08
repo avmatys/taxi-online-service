@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+  <persistence-unit name="by.bsuir.matys_rozin_zarudny.taxi" transaction-type="JTA">
+    <jta-data-source>taxi-service</jta-data-source>
+    <class>by.bsuir.matys_rozin_zarudny.layer.persistence.data.mappers.booking.JpaBookingStateDataConverter</class>
+    <class>by.bsuir.matys_rozin_zarudny.layer.persistence.data.mappers.taxi.JpaTaxiStateDataConverter</class>
+    <class>by.bsuir.matys_rozin_zarudny.layer.service.entities.VehicleType</class>
+    <class>by.bsuir.matys_rozin_zarudny.layer.service.entities.Vehicle</class>
+    <class>by.bsuir.matys_rozin_zarudny.layer.service.entities.Address</class>
+    <class>by.bsuir.matys_rozin_zarudny.layer.service.entities.Route</class>
+    <class>by.bsuir.matys_rozin_zarudny.layer.service.entities.Location</class>
+    <class>by.bsuir.matys_rozin_zarudny.layer.service.entities.Account</class>
+    <class>by.bsuir.matys_rozin_zarudny.layer.service.entities.booking.Booking</class>
+    <!-- <class>by.bsuir.matys_rozin_zarudny.layer.service.entities.events.PasswordResetEvent</class>  -->
+    <class>by.bsuir.matys_rozin_zarudny.layer.service.entities.taxi.Taxi</class>
+    <exclude-unlisted-classes>true</exclude-unlisted-classes>
+    <properties>
+      <property name="javax.persistence.schema-generation.database.action" value="update"/>
+    </properties>
+  </persistence-unit>
+</persistence>
